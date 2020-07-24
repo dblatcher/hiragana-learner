@@ -1,12 +1,15 @@
-function initGame() {
+function initGame(alphabet) {
 
     var holder = document.querySelector("#game")
     var template = document.querySelector("#gameTemplate")
 
+    var filterTemplate = document.querySelector("#filterTemplate")
+    var filters = document.querySelector('#filters')
+
     var state= {
         character:null,
         phase:0,
-        constanentFilter: ["","K","T","S"],
+        constanentFilter: [],
     }
 
     function makefilter() {
@@ -18,7 +21,7 @@ function initGame() {
 
     function startGame() {
         if (state.phase !== 0) {return reset()}
-        state.character = hiragana.random(makefilter())
+        state.character = alphabet.random(makefilter())
         holder.querySelector('[data-role=question]').innerHTML = state.character.html
         state.phase = 1
     }
@@ -42,8 +45,38 @@ function initGame() {
         holder.querySelector('[data-role=restart-button]').addEventListener('click',reset)
     }
 
+    function makefilterButtons() {
+
+        function makefilterButton(constanent) {
+            var node = filterTemplate.content.cloneNode(true)
+            let nodeInput = node.querySelector('input');
+            let nodeLabel = node.querySelector('label');
+            let nodeSpan = node.querySelector('span');
+            var constanentDisplayValue = constanent === "" ? "~" : constanent 
+            nodeSpan.innerText = constanentDisplayValue
+            nodeLabel.setAttribute('for', "filter-"+constanent)
+            nodeInput.setAttribute('id', "filter-"+constanent)
+            nodeInput.addEventListener('change', function(event){
+                var index = state.constanentFilter.indexOf(constanent)
+                if (this.checked && index === -1) {
+                    state.constanentFilter.push(constanent)
+                    
+                } else if (!this.checked && index !== -1) {
+                    state.constanentFilter.splice(index,1)
+                    
+                }
+            })
+            return node
+        }
+
+        alphabet.constanents.forEach(function (constanent) {
+            filters.appendChild(makefilterButton(constanent))
+        })
+    }
+
+    makefilterButtons()
     reset()
     return state
 }
 
-gameState = initGame()
+gameState = initGame(hiragana)

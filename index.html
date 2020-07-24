@@ -7,10 +7,6 @@
 
 <body>
     <h1>hiragana games</h1>
-
-    
-    <div id="testSquare" class="square"></div>
-    <div id="testSquare2" class="square"><span></span></div>
     <hr/>
     <p id="target">?</p>
     <hr/>
@@ -18,27 +14,36 @@
     <main id="game">
 
     </main>
+    <form id="filters"> 
+    </form>
 
     <template id="gameTemplate">
-        <button data-role="start-button">start</button>
-        <figure class="square">
-            <span data-role="question"></span>
-        </figure>
-        <figure class="square">
-            <span data-role="answer"></span>
-        </figure>
-        <button data-role="answer-button">show answer</button>
-        <button data-role="restart-button">restart</button>
+        <section class="frame">
+            <button data-role="start-button">start</button>
+            <figure class="square">
+                <span data-role="question"></span>
+            </figure>
+            <figure class="square">
+                <span data-role="answer"></span>
+            </figure>
+            <button data-role="answer-button">show answer</button>
+            <button data-role="restart-button">restart</button>
+        </section>
+
+    </template>
+
+    <template id="filterTemplate">
+        <label class="filter-button">
+            <span></span>
+            <input type="checkbox"/>
+        </label>
     </template>
 
     <script src="./character.js"></script>
     <script src="./alphabet.js"></script>
     <script src="./hiragana.js"></script>
     <script>
-        document.getElementById('target').innerHTML = hiragana.write('ku watou tosi. hiragana desuka?')
-        var letter = hiragana.random(function(character){return ["","K","T","S"].includes(character.constanent) })
-        document.getElementById('testSquare').appendChild(letter.span)
-        document.getElementById('testSquare2').children[0].innerHTML = letter.phonetic
+        document.getElementById('target').innerHTML = hiragana.write('hiragana desuka?')
     </script>
     <script src="./game.js"></script>
 </body>

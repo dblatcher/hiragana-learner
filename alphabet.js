@@ -19,7 +19,17 @@ Object.defineProperties(Alphabet.prototype,{
             var that = this
             return Object.keys(this.characters).map(function(identifer){return that.characters[identifer]})
         }
-    }
+    },
+    constanents: {
+        get: function() {
+            var output = []
+            var all = this.characterArray.map(function(character){return character.constanent})
+            for (var i=0; i<all.length; i++) {
+                if (output.indexOf(all[i]) === -1) {output.push(all[i])}
+            }
+            return output
+        }
+    },
 })
 
 Alphabet.prototype.decode = function(input) {
