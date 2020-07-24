@@ -33,6 +33,13 @@ Object.defineProperties(Character.prototype,{
             node.innerHTML = this.html
             return node
         }
-    }
+    },
+    phoneticSpan: {
+        get: function() {
+            var node = document.createElement('span')
+            node.innerHTML = this.phonetic
+            return node
+        }
+    },
 })
 

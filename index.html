@@ -11,7 +11,25 @@
     
     <div id="testSquare" class="square"></div>
     <div id="testSquare2" class="square"><span></span></div>
+    <hr/>
     <p id="target">?</p>
+    <hr/>
+
+    <main id="game">
+
+    </main>
+
+    <template id="gameTemplate">
+        <button data-role="start-button">start</button>
+        <figure class="square">
+            <span data-role="question"></span>
+        </figure>
+        <figure class="square">
+            <span data-role="answer"></span>
+        </figure>
+        <button data-role="answer-button">show answer</button>
+        <button data-role="restart-button">restart</button>
+    </template>
 
     <script src="./character.js"></script>
     <script src="./alphabet.js"></script>
@@ -22,4 +40,5 @@
         document.getElementById('testSquare').appendChild(letter.span)
         document.getElementById('testSquare2').children[0].innerHTML = letter.phonetic
     </script>
+    <script src="./game.js"></script>
 </body>
