@@ -9,7 +9,7 @@ Object.defineProperties(Character.prototype,{
     vowel: {
         get: function() {
             if (this.identifier.length === 1) {
-                return this.identifier
+                return ["A","E","I","O","U"].indexOf(this.identifier) !== -1 ? this.identifier : ""
             }
             return this.identifier.charAt(1)
         }
@@ -17,7 +17,7 @@ Object.defineProperties(Character.prototype,{
     constanent: {
         get: function() {
             if (this.identifier.length === 1) {
-                return ""
+                return ["A","E","I","O","U"].indexOf(this.identifier) === -1 ? this.identifier : ""
             }
             return this.identifier.charAt(0)
         }
