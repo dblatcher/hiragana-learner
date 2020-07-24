@@ -2,21 +2,24 @@
 
 <head>
 
-
+    <link rel="stylesheet" href="./style.css"></link>
 </head>
 
 <body>
-    <h1>hirogana games</h1>
+    <h1>hiragana games</h1>
 
-    <p id="target"></p>
-
+    
     <div id="testSquare" class="square"></div>
+    <div id="testSquare2" class="square"><span></span></div>
+    <p id="target">?</p>
 
     <script src="./character.js"></script>
     <script src="./alphabet.js"></script>
     <script src="./hiragana.js"></script>
     <script>
         document.getElementById('target').innerHTML = hiragana.write('ku watou tosi. hiragana desuka?')
-        document.getElementById('testSquare').appendChild(hiragana.random().span)
+        var letter = hiragana.random(function(character){return ["","K","T","S"].includes(character.constanent) })
+        document.getElementById('testSquare').appendChild(letter.span)
+        document.getElementById('testSquare2').children[0].innerHTML = letter.phonetic
     </script>
 </body>
