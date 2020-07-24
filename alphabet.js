@@ -55,3 +55,8 @@ Alphabet.prototype.write = function(input,options) {
     }
     return output
 }
+
+Alphabet.prototype.random = function() {
+    var i = Math.floor(Math.random() * this.identifiers.length)
+    return this.characters[this.identifiers[i]]
+}

@@ -6,15 +6,17 @@
 </head>
 
 <body>
-<h1>hirogana games</h1>
+    <h1>hirogana games</h1>
 
-<p>literal ku is &#x304f;</p>
-<p id="target"></p>
+    <p id="target"></p>
+
+    <div id="testSquare" class="square"></div>
 
     <script src="./character.js"></script>
     <script src="./alphabet.js"></script>
     <script src="./hiragana.js"></script>
     <script>
         document.getElementById('target').innerHTML = hiragana.write('ku watou tosi. hiragana desuka?')
+        document.getElementById('testSquare').appendChild(hiragana.random().span)
     </script>
 </body>
