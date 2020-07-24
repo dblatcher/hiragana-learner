@@ -13,6 +13,12 @@ Object.defineProperties(Alphabet.prototype,{
         get: function () {
             return Object.keys(this.characters)
         }
+    },
+    characterArray: {
+        get: function() {
+            var that = this
+            return Object.keys(this.characters).map(function(identifer){return that.characters[identifer]})
+        }
     }
 })
 
@@ -56,7 +62,8 @@ Alphabet.prototype.write = function(input,options) {
     return output
 }
 
-Alphabet.prototype.random = function() {
-    var i = Math.floor(Math.random() * this.identifiers.length)
-    return this.characters[this.identifiers[i]]
+Alphabet.prototype.random = function(filterFunction) {
+    var set = filterFunction ? this.characterArray.filter(filterFunction) : this.characterArray
+    var i = Math.floor(Math.random() * set.length)
+    return set[i]
 }
