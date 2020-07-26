@@ -11,32 +11,34 @@
     <p id="target">?</p>
     <hr/>
 
-    <main id="game">
-
-    </main>
+    <main id="game"></main>
 
 
     <template id="gameTemplate">
-        <h2>Flashcards</h2>
-        <section class="frame">
-            <figure class="square">
-                <span data-role="question"></span>
-            </figure>
-            <form data-role="answer-form">
-                <input class="answer-input" type="text" maxlength="3" placeholder="">
-            </form>
-            <figure class="square">
-                <span data-role="answer"></span>
-            </figure>
-            <button data-role="next-button">next</button>
+        
+        <div class="frame">
+            <h2>Flashcards</h2>
+            <section class="controls">
+                <figure class="square">
+                    <span data-role="question"></span>
+                </figure>
+                <form class="answer-form" data-role="answer-form">
+                    <input class="answer-input" type="text" maxlength="3" placeholder="">
+                </form>
+                <figure class="square">
+                    <span data-role="answer"></span>
+                </figure>
+                <button data-role="next-button">next</button>
+            </section>
+            
+            <p><span data-role="score-count">0</span>/<span data-role="round-count">0</span></p>
             <button data-role="restart-button">restart</button>
-        </section>
 
-        <p><span data-role="score-count">0</span>/<span data-role="round-count">0</span></p>
+            <p>include letters staring with:</p>
+            <section class="filters"> 
+            </section>
 
-        <p>include letters staring with:</p>
-        <section class="filters"> 
-        </section>
+        </div>
 
     </template>
 

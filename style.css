@@ -10,14 +10,22 @@
 }
 
 .frame {
-    display: flex;
     border: 3px double black;
     padding: .5rem;
 }
 
+.controls {
+    display: flex;
+}
+
+.answer-form {
+    display: flex;
+    align-items: center;
+}
+
 .answer-input {
     margin: .25rem;
-    align-self: center;
+    width: 4rem;
     text-align: center;
     font-size: 1.5rem;
 }
