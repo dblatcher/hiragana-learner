@@ -4,19 +4,21 @@ function initGame(alphabet) {
     var template = document.querySelector("#gameTemplate")
 
     var filterTemplate = document.querySelector("#filterTemplate")
-    
+    var textInput, answerForm;    
 
     var state= {
         character:null,
         phase:0,
         constanentFilter: [],
+        roundsWon: 0,
+        roundsPlayed: 0,
     }
 
     function makefilter() {
         if (state.constanentFilter && state.constanentFilter.length > 0) {
             return function(character){return state.constanentFilter.includes(character.constanent) }
         }
-        return function(character){return true }
+        return function(character){return true}
     } 
 
     function handleNextButton() {
@@ -29,14 +31,31 @@ function initGame(alphabet) {
         state.character = alphabet.random(makefilter())
         holder.querySelector('[data-role=question]').innerHTML = state.character.html
         holder.querySelector('[data-role=answer]').innerHTML = ""
+        textInput.value = ""
+        textInput.classList.remove('correct')
+        textInput.classList.remove('wrong')
         state.phase = 1
     }
 
     function showAnswer() {
         holder.querySelector('[data-role=answer]').innerHTML = state.character.phonetic
+        state.roundsPlayed++
+        if (textInput.value.toUpperCase() === state.character.phonetic.toUpperCase()) {
+            state.roundsWon++
+            textInput.classList.add('correct')
+        } else {
+            textInput.classList.add('wrong')
+        }
+        updateScores()
         state.phase = 2
     }
 
+    function updateScores() {
+        var scoreCount = holder.querySelector('[data-role=score-count]')
+        var roundCount = holder.querySelector('[data-role=round-count]')
+        scoreCount.innerText = state.roundsWon
+        roundCount.innerText = state.roundsPlayed
+    }
 
     function makefilterButtons() {
 
@@ -70,9 +89,10 @@ function initGame(alphabet) {
         })
     }
 
-
     function reset() {
         state.phase=0
+        state.roundsWon=0
+        state.roundsPlayed=0
         state.character=null
 
         while (holder.childElementCount > 0) {
@@ -81,7 +101,14 @@ function initGame(alphabet) {
         holder.appendChild(template.content.cloneNode(true))
         holder.querySelector('[data-role=next-button]').addEventListener('click',handleNextButton)
         holder.querySelector('[data-role=restart-button]').addEventListener('click',reset)
+        updateScores()
 
+        answerForm = holder.querySelector('[data-role=answer-form]') 
+        textInput = holder.querySelector('[type=text]')
+        answerForm.addEventListener('submit',function(event){
+            event.preventDefault()
+            handleNextButton()
+        })
         makefilterButtons()
     }
 

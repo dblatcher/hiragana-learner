@@ -1,5 +1,5 @@
 .square {
-    border: 1px solid red;
+    border: 2px outset gray;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -14,6 +14,23 @@
     border: 3px double black;
     padding: .5rem;
 }
+
+.answer-input {
+    margin: .25rem;
+    align-self: center;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.answer-input.correct {
+    background-color: green;
+}
+
+.answer-input.wrong {
+    background-color: red;
+}
+
+
 
 .filters {
     display: flex;
