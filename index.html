@@ -14,20 +14,22 @@
     <main id="game">
 
     </main>
-    <form id="filters"> 
-    </form>
+
 
     <template id="gameTemplate">
         <section class="frame">
-            <button data-role="start-button">start</button>
             <figure class="square">
                 <span data-role="question"></span>
             </figure>
             <figure class="square">
                 <span data-role="answer"></span>
             </figure>
-            <button data-role="answer-button">show answer</button>
+            <button data-role="next-button">next</button>
             <button data-role="restart-button">restart</button>
+        </section>
+
+        <p>include letters staring with:</p>
+        <section class="filters"> 
         </section>
 
     </template>

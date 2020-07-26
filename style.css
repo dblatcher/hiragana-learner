@@ -9,13 +9,13 @@
     margin: 0;
 }
 
-#game .frame {
+.frame {
     display: flex;
     border: 3px double black;
     padding: .5rem;
 }
 
-#filters {
+.filters {
     display: flex;
     flex-wrap: wrap;
 }
