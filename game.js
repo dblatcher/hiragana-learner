@@ -8,6 +8,7 @@ function initGame(alphabet) {
 
     var state= {
         character:null,
+        previousCharacter: null,
         phase:0,
         constanentFilter: [],
         roundsWon: 0,
@@ -16,9 +17,9 @@ function initGame(alphabet) {
 
     function makefilter() {
         if (state.constanentFilter && state.constanentFilter.length > 0) {
-            return function(character){return state.constanentFilter.includes(character.constanent) }
+            return function(character){return character !== state.previousCharacter && state.constanentFilter.includes(character.constanent) }
         }
-        return function(character){return true}
+        return function(character){return character !== state.previousCharacter}
     } 
 
     function handleNextButton() {
@@ -47,6 +48,7 @@ function initGame(alphabet) {
             textInput.classList.add('wrong')
         }
         updateScores()
+        state.previousCharacter = state.character
         state.phase = 2
     }
 
