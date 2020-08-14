@@ -38,12 +38,24 @@ Alphabet.prototype.decode = function(input) {
 
     function getNextCharacter() {
         //TO DO - check for identifiers that are substrings of another 
-        var characterLength = 0
+        var characterLength = 0, phonetic, section;
         for (var i = 0; i<that.identifiers.length; i++) {
             characterLength = that.identifiers[i].length
-            if (input.substring(0,characterLength).toUpperCase() == that.identifiers[i]) {
+            
+            section = input.substring(0,that.identifiers[i].length).toUpperCase()
+            
+            
+            if ( section == that.identifiers[i] ) {
                 decodedCharacters.push(that.characters[that.identifiers[i]])
-                input = input.substring(characterLength)
+                input = input.substring(section.length)
+                return
+            }
+
+            phonetic = that.characters[that.identifiers[i]].phonetic
+            section = input.substring(0, phonetic.length).toUpperCase()
+            if ( section == phonetic ) {
+                decodedCharacters.push(that.characters[that.identifiers[i]])
+                input = input.substring(section.length)
                 return
             }
         }
