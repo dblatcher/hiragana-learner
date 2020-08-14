@@ -1,0 +1,39 @@
+<!doctype html>
+
+<head>
+
+    <link rel="stylesheet" href="./style.css"></link>
+</head>
+
+<body>
+    <h1>hiragana games</h1>
+    <hr/>
+    <p id="target">?</p>
+    <hr/>
+
+    <main id="game"></main>
+
+    <template id="question"> 
+        <p>
+            <span role="wordToGuess"></span>
+            <span>=</span>
+            <span role="answer"></span>
+        </p>
+        <div role="options"></div>
+        <p role="feedback"></p>
+        <button role="next-button">next</button>
+        <p role="score"></p>
+    </template>
+
+    <template id="options">
+        <button></button>
+    </template>
+
+    <script src="./character.js"></script>
+    <script src="./alphabet.js"></script>
+    <script src="./hiragana.js"></script>
+    <script>
+        document.getElementById('target').innerHTML = hiragana.write('dore kotoba desuka?')
+    </script>
+    <script src="./wordgame.js"></script>
+</body>
