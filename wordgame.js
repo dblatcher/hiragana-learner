@@ -1,19 +1,4 @@
-function Word (text, translation) {
-    this.text = text
-    this.translation = translation
-}
-
-const wordList = [
-    new Word('kinnoko', 'mushrooms'),
-    new Word('konbanwa','good evening'),
-    new Word('ki', 'tree'),
-    new Word('inu','dog'),
-    new Word('tamogo','eggs'),
-    new Word('niku','meat'),
-    new Word('ohashi','chopsticks'),
-]
-
-function initWordGame(wordList, alphabet) {
+function initWordGame(wordList) {
     var state = {
         word: null,
         previousWord: null,
@@ -52,7 +37,7 @@ function initWordGame(wordList, alphabet) {
     }
 
     function populate() {
-        holder.querySelector('[role="wordToGuess"]').innerHTML= alphabet.write(state.word.text)
+        holder.querySelector('[role="wordToGuess"]').innerHTML= state.word.write()
         holder.querySelector('[role="answer"]').innerText= "??";
         holder.querySelector('[role="feedback"]').innerText= "...";
         holder.querySelector('[role="score"]').innerText= state.score.toString()+"/"+state.roundsPlayed.toString();
@@ -108,8 +93,6 @@ function initWordGame(wordList, alphabet) {
     reset()
     pickNextWordAndOptions()
     populate()
-
-    window.state = state
 }
 
-initWordGame(wordList, hiragana) 
+initWordGame(hiraganaWordList) 

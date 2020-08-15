@@ -89,3 +89,13 @@ Alphabet.prototype.random = function(filterFunction) {
     var i = Math.floor(Math.random() * set.length)
     return set[i]
 }
+
+function Word (text, translation, alphabet) {
+    this.text = text
+    this.translation = translation
+    this.alphabet = alphabet
+}
+
+Word.prototype.write = function() {
+    return this.alphabet.write(this.text)
+}

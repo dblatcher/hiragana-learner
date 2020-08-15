@@ -77,3 +77,14 @@ var hiraganaData = [
 ]
 
 var hiragana = new Alphabet(hiraganaData)
+
+
+const hiraganaWordList = [
+    new Word('kinnoko', 'mushrooms', hiragana),
+    new Word('konbanwa','good evening', hiragana),
+    new Word('ki', 'tree', hiragana),
+    new Word('inu','dog', hiragana),
+    new Word('tamogo','eggs', hiragana),
+    new Word('niku','meat', hiragana),
+    new Word('ohashi','chopsticks', hiragana),
+]
