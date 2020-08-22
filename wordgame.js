@@ -95,4 +95,4 @@ function initWordGame(wordList) {
     populate()
 }
 
-initWordGame(hiraganaWordList) 
+initWordGame([].concat(...katakanaWordList, ...hiraganaWordList) )

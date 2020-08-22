@@ -1,5 +1,5 @@
 
-var hiraganaData = [
+var hiragana = new Alphabet( [
     [0x3042,"A"],
     [0x3044,"I"],
     [0x3046,"U"],
@@ -74,9 +74,7 @@ var hiraganaData = [
     [0x3092,"WO"],
     [0x3093,"N"],
     [0x3094,"VU"]
-]
-
-var hiragana = new Alphabet(hiraganaData)
+])
 
 
 const hiraganaWordList = [
